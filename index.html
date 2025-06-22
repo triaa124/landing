@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DuaPutri - Solusi Obat Tanaman Berkualitas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* CSS Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        /* Variabel Warna */
         :root {
             --primary: #2e7d32;
             --primary-light: #60ad5e;
@@ -24,382 +23,243 @@
             --white: #fff;
         }
 
-        /* Global Styles */
         body {
+            font-family: 'Poppins', sans-serif;
             color: var(--text);
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .btn {
-            display: inline-block;
+        .btn-primary {
             background-color: var(--primary);
-            color: var(--white);
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            border-color: var(--primary);
         }
 
-        .btn:hover {
+        .btn-primary:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* Navbar */
+        .navbar {
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .navbar-brand span {
+            color: var(--primary-dark);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 8px 15px !important;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(46, 125, 50, 0.1);
+            color: var(--primary) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 0;
+            position: relative;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-weight: 700;
             color: var(--primary-dark);
-            text-align: center;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
         }
 
         .section-subtitle {
             color: var(--text-light);
-            text-align: center;
             max-width: 700px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 50px;
         }
 
-        /* Header */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--primary-dark);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            color: var(--white);
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+        .bg-light-green {
+            background-color: rgba(46, 125, 50, 0.05);
         }
 
         /* About Section */
-        .about {
-            padding: 100px 0;
-            background-color: var(--secondary);
+        .about-img {
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: rotate(-2deg);
+            transition: all 0.5s ease;
         }
 
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
+        .about-img:hover {
+            transform: rotate(0deg) scale(1.02);
         }
 
-        .about-text {
-            flex: 1;
-        }
-
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Products Section */
-        .products {
-            padding: 100px 0;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
+        /* Product Card */
         .product-card {
-            background-color: var(--white);
-            border-radius: 10px;
+            border: none;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.2);
         }
 
-        .product-image {
+        .product-img {
             height: 200px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.5s ease;
         }
 
-        .product-card:hover .product-image img {
+        .product-card:hover .product-img {
             transform: scale(1.1);
         }
 
-        .product-info {
-            padding: 20px;
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
         }
 
-        .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--primary-dark);
-        }
-
-        .product-description {
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-
-        .product-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 100px 0;
-            background-color: var(--secondary);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
+        /* Testimonial */
         .testimonial-card {
-            background-color: var(--white);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.15);
         }
 
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-
-        .author-image {
-            width: 50px;
-            height: 50px;
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-        }
-
-        .author-image img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            border: 3px solid var(--primary);
         }
 
-        .author-name {
-            font-weight: 700;
-        }
-
-        .author-role {
-            color: var(--text-light);
-            font-size: 0.9rem;
+        .rating {
+            color: #ffc107;
         }
 
         /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            text-align: center;
+        .cta-section {
             background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.9)), url('https://images.unsplash.com/photo-1534710961216-75c88202f43d');
             background-size: cover;
             background-position: center;
-            color: var(--white);
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+            padding: 100px 0;
         }
 
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 80, 5, 0.7);
         }
 
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--secondary);
-            color: var(--primary-dark);
+        .cta-content {
+            position: relative;
+            z-index: 1;
         }
 
         /* Footer */
         footer {
             background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 60px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary-light);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
+            color: white;
+            padding-top: 80px;
         }
 
         .footer-links a {
-            color: var(--white);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 10px;
         }
 
         .footer-links a:hover {
-            color: var(--primary-light);
+            color: white;
+            padding-left: 5px;
         }
 
-        .contact-info {
-            list-style: none;
-        }
-
-        .contact-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--primary-light);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
+        .social-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -407,275 +267,346 @@
             height: 40px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: var(--white);
-            transition: all 0.3s;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
         }
 
-        .social-links a:hover {
+        .social-icon:hover {
             background-color: var(--primary-light);
             transform: translateY(-3px);
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
+        .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            padding-top: 20px;
+            margin-top: 50px;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
             }
             
-            .about-text, .about-image {
-                flex: none;
-                width: 100%;
+            .section {
+                padding: 60px 0;
             }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 10px 0;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .section-subtitle {
-                font-size: 0.9rem;
+            
+            .navbar-brand {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">DuaPutri<span>Farm</span></a>
-                <ul class="nav-links">
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#products">Produk</a></li>
-                    <li><a href="#testimonials">Testimoni</a></li>
-                    <li><a href="#contact">Kontak</a></li>
+            <a class="navbar-brand" href="#">
+                <span class="text-primary">DuaPutri</span>Farm
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Produk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="#products">Beli Sekarang</a>
+                    </li>
                 </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero-section" id="home">
         <div class="container">
-            <div class="hero-content">
-                <h1>Solusi Obat Tanaman Berkualitas</h1>
-                <p>Kami menyediakan berbagai obat tanaman yang efektif untuk mengatasi hama, penyakit, dan meningkatkan pertumbuhan tanaman Anda.</p>
-                <a href="#products" class="btn">Lihat Produk</a>
+            <div class="row align-items-center">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">Solusi Obat Tanaman Berkualitas</h1>
+                    <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">Kami menyediakan berbagai obat tanaman yang efektif untuk mengatasi hama, penyakit, dan meningkatkan pertumbuhan tanaman Anda.</p>
+                    <div class="d-flex gap-3 animate__animated animate__fadeIn animate__delay-2s">
+                        <a href="#products" class="btn btn-primary btn-lg px-4">Lihat Produk</a>
+                        <a href="#about" class="btn btn-outline-light btn-lg px-4">Tentang Kami</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left">
+                    <img src="./asset/1355aeb2149716c873a56703610c5904.jpg" alt="Tanaman Sehat" class="img-fluid floating">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="section bg-light-green" id="about">
         <div class="container">
-            <h2 class="section-title">Tentang Kami</h2>
-            <p class="section-subtitle">DuaPutri Farm adalah perusahaan yang berkomitmen untuk menyediakan solusi perawatan tanaman terbaik dengan produk-produk berkualitas tinggi.</p>
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Tentang Kami</h2>
+                <p class="section-subtitle">DuaPutri Farm adalah perusahaan yang berkomitmen untuk menyediakan solusi perawatan tanaman terbaik dengan produk-produk berkualitas tinggi.</p>
+            </div>
             
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Mengapa Memilih Produk Kami?</h3>
-                    <p>Kami telah berpengalaman lebih dari 10 tahun dalam industri pertanian dan hortikultura. Produk kami telah teruji secara klinis dan terbukti efektif untuk berbagai jenis tanaman.</p>
-                    <p>Dengan bahan-bahan alami dan formula terkini, obat tanaman dari DuaPutri Farm tidak hanya efektif tetapi juga ramah lingkungan.</p>
-                    <p>Tim ahli kami selalu siap memberikan konsultasi gratis untuk membantu Anda memilih produk yang tepat sesuai kebutuhan tanaman Anda.</p>
-                    <a href="#contact" class="btn">Hubungi Kami</a>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <img src="./asset/1355aeb2149716c873a56703610c5904.jpg" alt="Tentang DuaPutri" class="img-fluid about-img">
                 </div>
-                <div class="about-image">
-                    <img src="./asset/1355aeb2149716c873a56703610c5904.jpg" alt="Tentang DuaPutri">
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 class="mb-4">Mengapa Memilih Produk Kami?</h3>
+                    <p class="mb-4">Kami telah berpengalaman lebih dari 10 tahun dalam industri pertanian dan hortikultura. Produk kami telah teruji secara klinis dan terbukti efektif untuk berbagai jenis tanaman.</p>
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Bahan Alami</h5>
+                            <p class="text-muted">Formula ramah lingkungan dengan bahan-bahan alami terbaik</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Teruji Klinis</h5>
+                            <p class="text-muted">Efektivitas produk telah terbukti melalui uji klinis</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Dukungan Ahli</h5>
+                            <p class="text-muted">Konsultasi gratis dengan tim ahli kami</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary mt-3">Hubungi Kami</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section class="products" id="products">
+    <section class="section" id="products">
         <div class="container">
-            <h2 class="section-title">Produk Kami</h2>
-            <p class="section-subtitle">Temukan berbagai obat tanaman berkualitas tinggi untuk berbagai kebutuhan perawatan tanaman Anda.</p>
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Produk Kami</h2>
+                <p class="section-subtitle">Temukan berbagai obat tanaman berkualitas tinggi untuk berbagai kebutuhan perawatan tanaman Anda.</p>
+            </div>
             
-            <div class="product-grid">
+            <div class="row">
                 <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="./asset/JAFFA VIT HIJAU 500ML PUPUK ORGANIK CAIR.jpg" alt="Pestisida Organik">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Pestisida Organik</h3>
-                        <p class="product-description">Solusi alami untuk mengendalikan hama tanaman tanpa bahan kimia berbahaya.</p>
-                        <p class="product-price">Rp 75.000</p>
-                        <a href="#" class="btn">Beli Sekarang</a>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="./asset/JAFFA VIT HIJAU 500ML PUPUK ORGANIK CAIR.jpg" class="product-img w-100" alt="Pestisida Organik">
+                            <span class="product-badge">Terlaris</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Pestisida Organik</h5>
+                            <p class="card-text text-muted">Solusi alami untuk mengendalikan hama tanaman tanpa bahan kimia berbahaya.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 text-primary">Rp 75.000</h5>
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">Beli</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="./asset/fungisida DITHAN M-45 kemasan 1kg.jpg" alt="Fungisida">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Fungisida Premium</h3>
-                        <p class="product-description">Mengatasi berbagai penyakit jamur pada tanaman dengan efektif.</p>
-                        <p class="product-price">Rp 85.000</p>
-                        <a href="#" class="btn">Beli Sekarang</a>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="./asset/fungisida DITHAN M-45 kemasan 1kg.jpg" class="product-img w-100" alt="Fungisida">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Fungisida Premium</h5>
+                            <p class="card-text text-muted">Mengatasi berbagai penyakit jamur pada tanaman dengan efektif.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 text-primary">Rp 85.000</h5>
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">Beli</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="./asset/POC CESPLENG Pupuk Organik Cair Untuk Pembuahan 1000 ml Bukan Nasa,Grow Mate,Grow More,GDM.jpg" alt="Pupuk Cair">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Pupuk Cair Organik</h3>
-                        <p class="product-description">Meningkatkan pertumbuhan tanaman dengan nutrisi lengkap.</p>
-                        <p class="product-price">Rp 65.000</p>
-                        <a href="#" class="btn">Beli Sekarang</a>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="product-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="./asset/POC CESPLENG Pupuk Organik Cair Untuk Pembuahan 1000 ml Bukan Nasa,Grow Mate,Grow More,GDM.jpg" class="product-img w-100" alt="Pupuk Cair">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Pupuk Cair Organik</h5>
+                            <p class="card-text text-muted">Meningkatkan pertumbuhan tanaman dengan nutrisi lengkap.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 text-primary">Rp 65.000</h5>
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">Beli</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="./asset/89d852200972ae85ca1ebd3b898fe8bd.jpg" alt="ZPT">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Zat Pengatur Tumbuh</h3>
-                        <p class="product-description">Merangsang pertumbuhan akar, bunga, dan buah pada tanaman.</p>
-                        <p class="product-price">Rp 95.000</p>
-                        <a href="#" class="btn">Beli Sekarang</a>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="./asset/89d852200972ae85ca1ebd3b898fe8bd.jpg" class="product-img w-100" alt="ZPT">
+                            <span class="product-badge">Baru</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Zat Pengatur Tumbuh</h5>
+                            <p class="card-text text-muted">Merangsang pertumbuhan akar, bunga, dan buah pada tanaman.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 text-primary">Rp 95.000</h5>
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">Beli</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="./asset/Convey Complete Herbisida 310 SC 500ml (1).jpg" alt="Herbisida">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Herbisida Selektif</h3>
-                        <p class="product-description">Mengendalikan gulma tanpa merusak tanaman utama.</p>
-                        <p class="product-price">Rp 110.000</p>
-                        <a href="#" class="btn">Beli Sekarang</a>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="./asset/Convey Complete Herbisida 310 SC 500ml (1).jpg" class="product-img w-100" alt="Herbisida">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Herbisida Selektif</h5>
+                            <p class="card-text text-muted">Mengendalikan gulma tanpa merusak tanaman utama.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 text-primary">Rp 110.000</h5>
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">Beli</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="./asset/RRK Pupuk NPK mutiara 16-16-16 (1 kg) - repack 1 kg.jpg" alt="Paket Lengkap">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Paket Perawatan Lengkap</h3>
-                        <p class="product-description">Semua yang Anda butuhkan untuk perawatan tanaman dalam satu paket.</p>
-                        <p class="product-price">Rp 350.000</p>
-                        <a href="#" class="btn">Beli Sekarang</a>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="product-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="./asset/RRK Pupuk NPK mutiara 16-16-16 (1 kg) - repack 1 kg.jpg" class="product-img w-100" alt="Paket Lengkap">
+                            <span class="product-badge">Spesial</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Paket Perawatan Lengkap</h5>
+                            <p class="card-text text-muted">Semua yang Anda butuhkan untuk perawatan tanaman dalam satu paket.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0 text-primary">Rp 350.000</h5>
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">Beli</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="#contact" class="btn btn-outline-primary px-4">Lihat Semua Produk</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <section class="section bg-light-green" id="testimonials">
         <div class="container">
-            <h2 class="section-title">Apa Kata Pelanggan Kami</h2>
-            <p class="section-subtitle">Berikut adalah testimoni dari pelanggan yang telah menggunakan produk DuaPutri Farm.</p>
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Apa Kata Pelanggan Kami</h2>
+                <p class="section-subtitle">Berikut adalah testimoni dari pelanggan yang telah menggunakan produk DuaPutri Farm.</p>
+            </div>
             
-            <div class="testimonial-grid">
+            <div class="row">
                 <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Pestisida dari DuaPutri Farm sangat efektif mengatasi hama di kebun saya. Tanaman jadi lebih sehat dan produktif."</p>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Budi Santoso">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card h-100">
+                        <div class="rating mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <div>
-                            <p class="author-name">Budi Santoso</p>
-                            <p class="author-role">Petani Sayur Organik</p>
+                        <p class="mb-4">"Pestisida dari DuaPutri Farm sangat efektif mengatasi hama di kebun saya. Tanaman jadi lebih sehat dan produktif."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-img me-3" alt="Budi Santoso">
+                            <div>
+                                <h6 class="mb-0">Budi Santoso</h6>
+                                <small class="text-muted">Petani Sayur Organik</small>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Fungisida Premium benar-benar menyelamatkan tanaman anggur saya dari serangan jamur. Hasil panen meningkat signifikan."</p>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Siti Aminah">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card h-100">
+                        <div class="rating mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
                         </div>
-                        <div>
-                            <p class="author-name">Siti Aminah</p>
-                            <p class="author-role">Pemilik Kebun Anggur</p>
+                        <p class="mb-4">"Fungisida Premium benar-benar menyelamatkan tanaman anggur saya dari serangan jamur. Hasil panen meningkat signifikan."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="testimonial-img me-3" alt="Siti Aminah">
+                            <div>
+                                <h6 class="mb-0">Siti Aminah</h6>
+                                <small class="text-muted">Pemilik Kebun Anggur</small>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Paket lengkapnya sangat membantu pemula seperti saya. Sekarang tanaman hias di rumah tumbuh subur dan bebas hama."</p>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dewi Lestari">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card h-100">
+                        <div class="rating mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <div>
-                            <p class="author-name">Dewi Lestari</p>
-                            <p class="author-role">Pecinta Tanaman Hias</p>
+                        <p class="mb-4">"Paket lengkapnya sangat membantu pemula seperti saya. Sekarang tanaman hias di rumah tumbuh subur dan bebas hama."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img me-3" alt="Dewi Lestari">
+                            <div>
+                                <h6 class="mb-0">Dewi Lestari</h6>
+                                <small class="text-muted">Pecinta Tanaman Hias</small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -684,138 +615,293 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section class="cta-section">
         <div class="container">
-            <h2>Siap Meningkatkan Kesehatan Tanaman Anda?</h2>
-            <p>Dapatkan produk terbaik kami sekarang dan nikmati tanaman yang lebih sehat dan produktif.</p>
-            <a href="#products" class="btn">Pesan Sekarang</a>
+            <div class="cta-content text-center" data-aos="zoom-in">
+                <h2 class="display-5 fw-bold mb-4">Siap Meningkatkan Kesehatan Tanaman Anda?</h2>
+                <p class="lead mb-5">Dapatkan produk terbaik kami sekarang dan nikmati tanaman yang lebih sehat dan produktif.</p>
+                <a href="#products" class="btn btn-light btn-lg px-5 me-3">Pesan Sekarang</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg px-5">Kontak Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <p class="section-subtitle">Jika Anda memiliki pertanyaan atau membutuhkan bantuan, jangan ragu untuk menghubungi tim kami.</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                    <h3 class="mb-4">Informasi Kontak</h3>
+                    <p class="mb-5">Tim kami siap membantu Anda dengan segala pertanyaan tentang produk dan layanan kami.</p>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Alamat</h5>
+                            <p class="text-muted">Jl. Pertanian No. 123, Jakarta Selatan, Indonesia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Telepon</h5>
+                            <p class="text-muted">+62 812 3456 7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Email</h5>
+                            <p class="text-muted">info@DuaPutriFarm.id</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5 class="mb-3">Ikuti Kami</h5>
+                        <div class="d-flex">
+                            <a href="#" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon me-2"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-5">
+                            <h3 class="mb-4">Kirim Pesan</h3>
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Alamat Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subjek</label>
+                                    <input type="text" class="form-control" id="subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Pesan</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Kirim Pesan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Tentang DuaPutri Farm</h3>
-                    <p>DuaPutri Farm adalah perusahaan yang berdedikasi untuk menyediakan solusi perawatan tanaman terbaik dengan produk-produk berkualitas tinggi.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-white mb-4">DuaPutri Farm</h4>
+                    <p class="mb-4">Solusi terbaik untuk perawatan tanaman Anda dengan produk-produk berkualitas tinggi yang ramah lingkungan.</p>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon me-2"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Produk</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Pestisida</a></li>
-                        <li><a href="#">Fungisida</a></li>
-                        <li><a href="#">Pupuk</a></li>
-                        <li><a href="#">ZPT</a></li>
-                        <li><a href="#">Herbisida</a></li>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-white mb-4">Produk</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-links">Pestisida</a></li>
+                        <li class="mb-2"><a href="#" class="footer-links">Fungisida</a></li>
+                        <li class="mb-2"><a href="#" class="footer-links">Pupuk</a></li>
+                        <li class="mb-2"><a href="#" class="footer-links">ZPT</a></li>
+                        <li class="mb-2"><a href="#" class="footer-links">Herbisida</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Link Cepat</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="#about">Tentang Kami</a></li>
-                        <li><a href="#products">Produk</a></li>
-                        <li><a href="#testimonials">Testimoni</a></li>
-                        <li><a href="#contact">Kontak</a></li>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-white mb-4">Perusahaan</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#about" class="footer-links">Tentang Kami</a></li>
+                        <li class="mb-2"><a href="#testimonials" class="footer-links">Testimoni</a></li>
+                        <li class="mb-2"><a href="#" class="footer-links">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="footer-links">Karir</a></li>
+                        <li class="mb-2"><a href="#" class="footer-links">Mitra</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Hubungi Kami</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Jl. Pertanian No. 123, Jakarta Selatan, Indonesia</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>+62 812 3456 7890</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>info@DuaPutriFarm.id</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Senin - Jumat: 08:00 - 17:00</span>
-                        </li>
-                    </ul>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-4">Berlangganan</h5>
+                    <p class="mb-4">Dapatkan informasi terbaru dan penawaran spesial langsung ke email Anda.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Alamat Email">
+                            <button class="btn btn-primary" type="button">Daftar</button>
+                        </div>
+                    </form>
+                    <small class="text-white-50">Kami tidak akan membagikan email Anda ke pihak lain.</small>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2025 DuaPutri Farm. All Rights Reserved.</p>
+            <div class="footer-bottom pt-4 mt-5">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <p class="mb-0">&copy; 2025 DuaPutri Farm. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="text-white-50 me-3">Kebijakan Privasi</a>
+                        <a href="#" class="text-white-50">Syarat & Ketentuan</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Font Awesome for icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
-    <!-- JavaScript -->
+    <!-- Product Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pemesanan Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="./asset/JAFFA VIT HIJAU 500ML PUPUK ORGANIK CAIR.jpg" class="img-fluid rounded" alt="Product Image">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Pestisida Organik</h4>
+                            <div class="rating mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                                <span class="ms-2">4.5 (128 reviews)</span>
+                            </div>
+                            <h5 class="text-primary mb-3">Rp 75.000</h5>
+                            <p class="mb-4">Solusi alami untuk mengendalikan hama tanaman tanpa bahan kimia berbahaya.</p>
+                            
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Jumlah</label>
+                                    <div class="input-group" style="max-width: 120px;">
+                                        <button class="btn btn-outline-secondary" type="button">-</button>
+                                        <input type="text" class="form-control text-center" value="1">
+                                        <button class="btn btn-outline-secondary" type="button">+</button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary w-100 mb-2">Tambah ke Keranjang</button>
+                                <button type="button" class="btn btn-outline-primary w-100">Beli Sekarang</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
     <script>
-        // Mobile Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
         });
         
-        // Smooth Scrolling for Anchor Links
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
-                // Close mobile menu if open
-                navLinks.classList.remove('active');
                 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu when clicking a link
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
                 }
             });
         });
         
-        // Sticky Header on Scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.classList.toggle('sticky', window.scrollY > 0);
-        });
-        
-        // Product Modal (placeholder functionality)
-        const productButtons = document.querySelectorAll('.product-card .btn');
-        
-        productButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('Fitur pemesanan akan segera tersedia! Silahkan hubungi kami melalui kontak yang tersedia.');
-            });
-        });
-        
-        // Form Submission (placeholder)
-        const contactForm = document.querySelector('#contact-form');
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
         if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                alert('Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.');
+                
+                // Here you would typically send the data to a server
+                // For this example, we'll just show an alert
+                alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+                
+                // Reset form
                 contactForm.reset();
             });
         }
+        
+        // Product quantity buttons
+        document.querySelectorAll('.input-group button').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentNode.querySelector('input');
+                let value = parseInt(input.value);
+                
+                if (this.textContent === '+' && value < 10) {
+                    input.value = value + 1;
+                } else if (this.textContent === '-' && value > 1) {
+                    input.value = value - 1;
+                }
+            });
+        });
     </script>
 </body>
 </html>
